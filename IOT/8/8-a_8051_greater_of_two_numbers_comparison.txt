@@ -1,0 +1,23 @@
+ORG 0000H
+
+MOV A, #05H      ; First number
+MOV R1, #03H     ; Second number
+
+CLR C            ; Clear carry
+SUBB A, R1       ; A = A - R1 (for comparison)
+
+JC NEXT          ; If A < R1, jump
+
+; A is greater or equal
+MOV A, #05H      ; restore first number
+SJMP DISPLAY
+
+NEXT:
+MOV A, R1        ; second number is greater
+
+DISPLAY:
+MOV P1, A        ; send result to Port 1
+
+SJMP $           ; stop here
+
+END

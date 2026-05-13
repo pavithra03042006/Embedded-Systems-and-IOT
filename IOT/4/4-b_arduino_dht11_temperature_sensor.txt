@@ -1,0 +1,16 @@
+int val;
+int tempPin=A0;
+void setup()
+{
+Serial.begin(9600);
+}
+void loop()
+{
+val=analogRead(tempPin);
+float mv=(val/1024.0)*5000; //Convert tomillivolts 
+float cel=(mv-500)/10; //ConverttoCelsius
+Serial.print("Temperature =");
+Serial.print(cel); 
+Serial.println("*C");
+delay(1000);
+}

@@ -1,0 +1,42 @@
+AND
+
+ORG 0000H
+
+MOV A, #55H
+ANL A, #0F0H
+MOV 30H, A
+
+SJMP $
+
+END
+
+
+
+
+
+
+OR
+
+ORG 0000H
+
+MOV A, #55H
+ORL A, #0F0H
+MOV 31H, A
+
+SJMP $
+
+END
+
+
+
+XOR
+
+ORG 0000H
+
+MOV A, #55H
+XRL A, #0F0H
+MOV 32H, A
+
+SJMP $
+
+END

@@ -1,0 +1,12 @@
+from machine import ADC
+import time
+
+# LDR connected to GP26 (ADC0)
+ldr = ADC(26)
+
+while True:
+    light_value = ldr.read_u16()   # Reads value from 0 to 65535
+
+    print("Light Intensity:", light_value)
+
+    time.sleep(1)

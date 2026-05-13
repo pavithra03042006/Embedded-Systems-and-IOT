@@ -1,0 +1,24 @@
+ORG 0000H
+
+MOV A, #05H      ; First number
+MOV R1, #03H     ; Second number
+
+CLR C
+SUBB A, R1       ; A - R1
+
+JC NEXT          ; If A < R1, A is smaller
+
+; If no carry → R1 is smaller
+MOV A, R1
+SJMP DISPLAY
+
+NEXT:
+; A is smaller
+MOV A, #05H
+
+DISPLAY:
+MOV P0, A        ; Display smallest number on Port 1
+
+SJMP $
+
+END

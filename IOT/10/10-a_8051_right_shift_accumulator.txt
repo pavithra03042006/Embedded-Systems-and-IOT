@@ -1,0 +1,9 @@
+ORG 0000H
+
+MOV A, #10H
+RR A
+MOV 30H, A
+
+SJMP $
+
+END
