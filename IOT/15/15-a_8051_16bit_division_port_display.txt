@@ -1,57 +1,28 @@
 ORG 0000H
 
-; -------------------------
-; Load example values
-; -------------------------
-MOV 30H, #34H     ; Num1 Low
-MOV 31H, #12H     ; Num1 High
+MOV 31H, #12H
+MOV 30H, #34H
+MOV 32H, #06H
 
-MOV 32H, #02H     ; Num2 Low
-MOV 33H, #01H     ; Num2 High
-
-; -------------------------
-; Step 1: Low1 × Low2
-; -------------------------
-MOV A, 30H
-MOV B, 32H
-MUL AB
-
-MOV 40H, A        ; LSB result
-MOV 41H, B        ; carry part
-
-; -------------------------
-; Step 2: High1 × Low2
-; -------------------------
 MOV A, 31H
 MOV B, 32H
-MUL AB
+DIV AB
 
-ADD A, 41H        ; add previous carry
 MOV 41H, A
-MOV R0, B         ; store carry
+MOV R7, B
 
-; -------------------------
-; Step 3: Low1 × High2
-; -------------------------
+MOV A, R7
+MOV 33H, A
+
 MOV A, 30H
-MOV B, 33H
-MUL AB
+MOV 34H, A
 
-ADD A, 41H        ; add cross result
-MOV 41H, A
-MOV R1, B         ; carry
+MOV A, 33H
+MOV B, 32H
+DIV AB
 
-; -------------------------
-; Step 4: High1 × High2
-; -------------------------
-MOV A, 31H
-MOV B, 33H
-MUL AB
-
-ADD A, R0
-ADD A, R1
-MOV 42H, A        ; middle byte
-MOV 43H, B        ; highest byte
+MOV 40H, A
+MOV 42H, B
 
 SJMP $
 
