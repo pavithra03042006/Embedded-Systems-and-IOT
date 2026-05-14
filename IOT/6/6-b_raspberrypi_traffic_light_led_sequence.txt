@@ -1,31 +1,27 @@
 from machine import Pin
 import time
 
-red = Pin(1, Pin.OUT)
-yellow = Pin(5, Pin.OUT)
-green = Pin(9, Pin.OUT)
+red = Pin(1, Pin.OUT) 
+yellow = Pin(5, Pin.OUT) 
+green = Pin(9, Pin.OUT) 
 
 while True:
-
-    # Green LED ON
     green.value(1)
     yellow.value(0)
     red.value(0)
     time.sleep(3)
 
-    # Yellow LED ON
     green.value(0)
     yellow.value(1)
+    red.value(0)
     time.sleep(0.5)
 
-    # Red LED ON
+    green.value(0)
     yellow.value(0)
     red.value(1)
     time.sleep(2)
 
-    # Yellow LED ON again
+    green.value(0)
     yellow.value(1)
-    time.sleep(0.5)
-
-    yellow.value(0)
     red.value(0)
+    time.sleep(0.5)
