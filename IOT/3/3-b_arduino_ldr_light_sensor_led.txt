@@ -1,13 +1,28 @@
-int LED = 13;
+int ldr = A0;
+int led = 13;
+
+int threshold = 500;
+
 void setup()
 {
-  pinMode(LED, OUTPUT);
+    pinMode(led, OUTPUT);
+    Serial.begin(9600);
 }
 
 void loop()
 {
-  digitalWrite(LED, HIGH);
-  delay(1000); // Wait for 1000 millisecond(s)
-  digitalWrite(LED, LOW);
-  delay(1000); // Wait for 1000 millisecond(s)
+    int lightValue = analogRead(ldr);
+
+    Serial.println(lightValue);
+
+    if(lightValue < threshold)
+    {
+        digitalWrite(led, HIGH);
+    }
+    else
+    {
+        digitalWrite(led, LOW);
+    }
+
+    delay(500);
 }
