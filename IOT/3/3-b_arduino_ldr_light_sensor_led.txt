@@ -1,12 +1,13 @@
-from machine import ADC
-import time
+int LED = 13;
+void setup()
+{
+  pinMode(LED, OUTPUT);
+}
 
-# LDR connected to GP26 (ADC0)
-ldr = ADC(26)
-
-while True:
-    light_value = ldr.read_u16()   # Reads value from 0 to 65535
-
-    print("Light Intensity:", light_value)
-
-    time.sleep(1)
+void loop()
+{
+  digitalWrite(LED, HIGH);
+  delay(1000); // Wait for 1000 millisecond(s)
+  digitalWrite(LED, LOW);
+  delay(1000); // Wait for 1000 millisecond(s)
+}
